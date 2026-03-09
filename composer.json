@@ -1,0 +1,67 @@
+{
+    "name": "bytegourmet/laravel-conditional-expressions",
+    "description": "Fluent CASE WHEN expression builder for Laravel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Riju Ghosh",
+            "email": "ghoshriju33@gmail.com",
+            "role": "Maintainer"
+        }
+    ],
+    "require": {
+        "php": ">=8.2",
+        "illuminate/database": "^10.0|^11.0|^12.0",
+        "illuminate/support": "^10.0|^11.0|^12.0"
+    },
+    "require-dev": {
+        "larastan/larastan": "^2.0",
+        "orchestra/testbench": "^8.31|^9.9|^10.8",
+        "phpunit/phpunit": "^10.0.7|^11.5.3|^12.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "ByteGourmet\\LaravelConditionalExpressions\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ByteGourmet\\LaravelConditionalExpressions\\Tests\\": "tests",
+            "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
+        }
+    },
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse --ansi",
+        "test": "vendor/bin/phpunit --testdox --colors=always",
+        "test-coverage": "vendor/bin/phpunit --coverage-text",
+        "sniff": "vendor/bin/php-cs-fixer fix --verbose --dry-run --diff",
+        "lint": "vendor/bin/php-cs-fixer fix --verbose --show-progress=dots",
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build",
+            "@php vendor/bin/testbench serve --port=9100 --ansi"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ByteGourmet\\LaravelConditionalExpressions\\Providers\\CaseBuilderServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

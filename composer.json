@@ -3,7 +3,7 @@
     "description": "Fluent CASE WHEN expression builder for Laravel",
     "type": "library",
     "license": "MIT",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "authors": [
         {
             "name": "Riju Ghosh",
